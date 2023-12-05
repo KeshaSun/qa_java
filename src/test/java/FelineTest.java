@@ -8,14 +8,14 @@ import org.mockito.junit.MockitoJUnitRunner;
 import java.util.List;
 import static org.junit.Assert.assertEquals;
 
-@RunWith(MockitoJUnitRunner.class)
-public class FelineTest {
+    @RunWith(MockitoJUnitRunner.class)
+    public class FelineTest {
         @InjectMocks
         Feline feline;
         @Test
         public void felineFoodTest() throws Exception {
             List<String> food = feline.eatMeat();
-            assertEquals(List.of("Животные", "Птицы", "Рыба"), food);
+                assertEquals(List.of("Животные", "Птицы", "Рыба"), food);
         }
         @Test
         public void felineKittensTest(){
@@ -24,11 +24,11 @@ public class FelineTest {
         }
         @Spy
         Feline spyfeline;
-         @Test
-         public void felineFamilyTest() {
-             // устанавливаем поведение метода getFamily
+        @Test
+        public void felineFamilyTest() {
+            // устанавливаем поведение метода getFamily
             Mockito.when(spyfeline.getFamily()).thenReturn("Кошачьи");
             assertEquals("Кошачьи", spyfeline.getFamily());
         }
 
-}
+    }

@@ -35,13 +35,6 @@ public class CatTest {
         Mockito.when(predatorCat.eatMeat()).thenReturn(food);
         assertEquals(cat.getFood(),food);
     }
-    /*@Test
-    public void catFamilyTest() {
-        Feline spyFeline = spy(new Feline());
-        doReturn("Кошачьи").when(spyFeline).getFamily();
-        String family = spyFeline.getFamily();
-        assertEquals("Кошачьи", family);
-    }*/
 }
 
 
