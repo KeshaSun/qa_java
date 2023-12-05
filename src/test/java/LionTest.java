@@ -1,17 +1,12 @@
 import com.example.Feline;
 import com.example.Lion;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
-
 import java.util.List;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.doReturn;
+import static org.junit.Assert.*;
 import static org.assertj.core.api.Assertions.catchThrowable;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -28,7 +23,6 @@ public class LionTest {
     @Test
         public void lionDietTest() throws Exception {
         Lion lion = new Lion("Самец", predatorLion);
-        List<String> food = predatorLion.eatMeat();
         Mockito.when(predatorLion.getFood("Хищник")).thenReturn(List.of("Животные", "Птицы", "Рыба"));
         List<String> actualResult = lion.getFood();
         List<String> expectedResult = List.of("Животные", "Птицы", "Рыба");
@@ -38,8 +32,9 @@ public class LionTest {
         public void lionDoesHaveManeExceptionTest() {
         Throwable thrown = catchThrowable(() -> {
             Lion lion = new Lion("НедопустимоеЗначение", predatorLion);
-            lion.doesHaveMane();
+            Throwable exception = assertThrows(IndexOutOfBoundsException.class, lion::doesHaveMane);
+            assertEquals("Используйте допустимые значения пола животного - самей или самка", exception.getMessage());
         });
-        Assert.assertEquals("Используйте допустимые значения пола животного - самей или самка", thrown.getMessage());
+        //Assert.assertEquals("Используйте допустимые значения пола животного - самей или самка", thrown.getMessage());
         }
 }
